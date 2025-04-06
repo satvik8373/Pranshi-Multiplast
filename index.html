@@ -85,143 +85,32 @@
         }
 
         .header {
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.95);
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .logo img {
-            height: 45px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #007bff;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #007bff;
-        }
-
-        .mobile-menu {
-            display: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu i {
-            font-size: 1.5rem;
-            color: #333;
-        }
-
-        @media (max-width: 1024px) {
-            .nav-links {
-                gap: 1.5rem;
-            }
-
-            .nav-links a {
-                font-size: 0.95rem;
-            }
+            backdrop-filter: blur(10px);
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                padding: 0.8rem 4%;
+            .hero {
+                height: 100vh;
+                padding-top: 60px;
             }
 
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.98);
-                flex-direction: column;
-                gap: 0;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                padding: 1rem 0;
-                text-align: center;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                width: 100%;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 1rem 2rem;
-                font-size: 1.1rem;
-            }
-
-            .nav-links a::after {
-                display: none;
-            }
-
-            .nav-links a:hover,
-            .nav-links a.active {
-                background: #f8f9fa;
-            }
-
-            .mobile-menu {
-                display: block;
+            .hero-content {
+                padding: 1.5rem;
+                width: 95%;
+                background: transparent;
             }
         }
 
         @media (max-width: 480px) {
-            .navbar {
-                padding: 0.8rem 3%;
-            }
-
-            .logo img {
-                height: 40px;
+            .hero-content {
+                padding: 1rem;
+                background: transparent;
             }
         }
 
@@ -237,7 +126,7 @@
     <header class="header">
         <nav class="navbar">
             <div class="logo">
-                <img src="images/logo.png" alt="Pranshi Multiplast Logo">
+                <img src="images/logo.png" alt="Multiplast Factory Logo">
             </div>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
@@ -404,26 +293,5 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script>
-        // Add this script at the end of the body
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-            const icon = this.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const navLinks = document.querySelector('.nav-links');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target) && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                const icon = mobileMenu.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
-            }
-        });
-    </script>
 </body>
 </html> 
