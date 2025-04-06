@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant & Machinery - Multiplast Factory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to plant-machinery page */
+        .page-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/machinery/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .equipment-section {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            padding: 0 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .equipment-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .equipment-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .equipment-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .equipment-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .equipment-item:hover .equipment-image img {
+            transform: scale(1.1);
+        }
+
+        .equipment-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .equipment-content {
+            padding: 2rem;
+        }
+
+        .equipment-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .equipment-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .equipment-features {
+            list-style: none;
+        }
+
+        .equipment-features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            color: #555;
+        }
+
+        .equipment-features li i {
+            color: #007bff;
+            margin-right: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .stats-section {
+            padding: 5rem 0;
+            background: #007bff;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-item i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .quality-control {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .quality-control h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .quality-item {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .quality-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .quality-item i {
+            font-size: 2.5rem;
+            color: #007bff;
+            margin-bottom: 1.5rem;
+        }
+
+        .quality-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .quality-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/machinery/cta-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero {
+                height: 50vh;
+                margin-top: 60px;
+            }
+
+            .equipment-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quality-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/logo.png" alt="Multiplast Factory Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="company-profile.html">Company Profile</a></li>
+                <li><a href="products.html">Our Products</a></li>
+                <li><a href="plant-machinery.html" class="active">Plant & Machinery</a></li>
+                <li><a href="we-serve.html">We Serve</a></li>
+                <li><a href="infrastructure.html">Infrastructure</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Plant & Machinery Hero Section -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <h1>State-of-the-Art Plant & Machinery</h1>
+            <p>Advanced Equipment for Superior Quality Production</p>
+        </div>
+    </section>
+
+    <!-- Equipment Section -->
+    <section class="equipment-section">
+        <div class="container">
+            <div class="equipment-grid">
+                <!-- Extrusion Lines -->
+                <div class="equipment-item">
+                    <div class="equipment-image">
+                        <img src="images/machinery/lamination-machine.jpg" alt="Extrusion Lines">
+                        <div class="equipment-overlay">
+                            <h3>Extrusion Lines</h3>
+                        </div>
+                    </div>
+                    <div class="equipment-content">
+                        <h3>Extrusion Lines</h3>
+                        <p>Advanced extrusion lines for manufacturing high-quality plastic films with precise thickness control.</p>
+                        <ul class="equipment-features">
+                            <li><i class="fas fa-check"></i> Multi-layer Extrusion</li>
+                            <li><i class="fas fa-check"></i> Automatic Thickness Control</li>
+                            <li><i class="fas fa-check"></i> High Production Capacity</li>
+                        </ul>
+                    </div>
+                </div>
+
+                
+
+                <!-- Printing Machines -->
+                <div class="equipment-item">
+                    <div class="equipment-image">
+                        <img src="images/image_0901.jpg" alt="Printing Machines">
+                        <div class="equipment-overlay">
+                            <h3>Printing Machines</h3>
+                        </div>
+                    </div>
+                    <div class="equipment-content">
+                        <h3>Printing Machines</h3>
+                        <p>High-speed flexographic printing machines for vibrant and accurate packaging designs.</p>
+                        <ul class="equipment-features">
+                            <li><i class="fas fa-check"></i> 6-Color Printing</li>
+                            <li><i class="fas fa-check"></i> UV Curing System</li>
+                            <li><i class="fas fa-check"></i> Automatic Registration</li>
+                            <li><i class="fas fa-check"></i> High Speed</li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Slitting Machines -->
+                <div class="equipment-item">
+                    <div class="equipment-image">
+                        <img src="  \images\machinery\extrusion-line.jpg" alt="Slitting Machines">
+                        <div class="equipment-overlay">
+                            <h3>Slitting Machines</h3>
+                        </div>
+                    </div>
+                    <div class="equipment-content">
+                        <h3>Slitting Machines</h3>
+                        <p>Precision slitting machines for cutting and converting packaging materials.</p>
+                        <ul class="equipment-features">
+                            <li><i class="fas fa-check"></i> Automatic Tension Control</li>
+                            <li><i class="fas fa-check"></i> Multiple Slitting Options</li>
+                            <li><i class="fas fa-check"></i> High-Speed Operation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <i class="fas fa-industry"></i>
+                <h3>2</h3>
+                <p>Production Lines</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>6</h3>
+                <p>Tons/Day Production Capacity</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-cogs"></i>
+                <h3>8</h3>
+                <p>Advanced Machines</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-certificate"></i>
+                <h3>100%</h3>
+                <p>Quality Assurance</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Control Section -->
+    <section class="quality-control">
+        <div class="container">
+            <h2>Quality Control Equipment</h2>
+            <div class="quality-grid">
+                <div class="quality-item">
+                    <i class="fas fa-microscope"></i>
+                    <h3>Testing Lab</h3>
+                    <p>Advanced testing equipment for quality assurance and product validation.</p>
+                </div>
+                <div class="quality-item">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Measurement Tools</h3>
+                    <p>Precision instruments for accurate thickness and dimension measurements.</p>
+                </div>
+                <div class="quality-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Performance Analysis</h3>
+                    <p>Modern equipment for analyzing material properties and performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Experience Our Advanced Machinery?</h2>
+            <p>Schedule a visit to our facility and witness our state-of-the-art equipment in action.</p>
+            <a href="contact.html" class="cta-button">Contact Us Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +91 1234567890</p>
+                <p><i class="fas fa-envelope"></i> info@multiplast.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Your Address Here</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company-profile.html">Company Profile</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Multiplast Factory. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
