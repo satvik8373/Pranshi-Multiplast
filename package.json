@@ -1,0 +1,23 @@
+{
+  "name": "pranshi-multiplast",
+  "version": "1.0.0",
+  "description": "Modern packaging solutions website for Pranshi Multiplast",
+  "scripts": {
+    "build": "echo 'No build step required'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satvik8373/Pranshi-Multiplast.git"
+  },
+  "keywords": [
+    "packaging",
+    "manufacturing",
+    "website"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/satvik8373/Pranshi-Multiplast/issues"
+  },
+  "homepage": "https://github.com/satvik8373/Pranshi-Multiplast#readme"
+} 
