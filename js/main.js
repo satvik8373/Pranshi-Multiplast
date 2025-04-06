@@ -1,3 +1,81 @@
+// Development Banner
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if banner was previously dismissed
+    if (localStorage.getItem('devBannerDismissed')) return;
+
+    // Create banner element
+    const banner = document.createElement('div');
+    banner.className = 'dev-banner';
+    banner.innerHTML = `
+        <span>Development Mode - Created by <span class="dev-name">~satvik patel</span></span>
+        <button class="close-btn" aria-label="Close banner">×</button>
+    `;
+
+    // Add banner to page
+    document.body.insertBefore(banner, document.body.firstChild);
+
+    // Handle close button click
+    const closeBtn = banner.querySelector('.close-btn');
+    closeBtn.addEventListener('click', () => {
+        banner.style.opacity = '0';
+        banner.style.transition = 'opacity 0.3s ease';
+        setTimeout(() => {
+            banner.remove();
+            localStorage.setItem('devBannerDismissed', 'true');
+        }, 300);
+    });
+
+    // Adjust header position to account for banner
+    const header = document.querySelector('.header');
+    if (header) {
+        header.style.top = '2.5rem';
+    }
+});
+
+// Development Status
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if status was previously dismissed
+    if (localStorage.getItem('devStatusDismissed')) return;
+
+    // Create status element
+    const status = document.createElement('div');
+    status.className = 'dev-status';
+    status.innerHTML = `
+        <button class="dev-status-toggle" aria-label="Toggle development status">×</button>
+        <h4>Development Status</h4>
+        <ul class="dev-status-list">
+            <li class="dev-status-item incomplete">Mobile menu animation needs refinement</li>
+            <li class="dev-status-item bug">Product images not loading on Safari</li>
+            <li class="dev-status-item glitch">Contact form validation incomplete</li>
+            <li class="dev-status-item incomplete">Responsive design issues on tablets</li>
+            <li class="dev-status-item bug">Footer links not working properly</li>
+        </ul>
+    `;
+
+    // Add status to page
+    document.body.appendChild(status);
+
+    // Handle toggle button click
+    const toggleBtn = status.querySelector('.dev-status-toggle');
+    toggleBtn.addEventListener('click', () => {
+        status.classList.toggle('collapsed');
+        localStorage.setItem('devStatusCollapsed', status.classList.contains('collapsed'));
+    });
+
+    // Restore collapsed state if previously set
+    if (localStorage.getItem('devStatusCollapsed') === 'true') {
+        status.classList.add('collapsed');
+    }
+
+    // Handle click on collapsed status to expand
+    status.addEventListener('click', (e) => {
+        if (status.classList.contains('collapsed') && e.target === status) {
+            status.classList.remove('collapsed');
+            localStorage.setItem('devStatusCollapsed', 'false');
+        }
+    });
+});
+
 // Mobile Menu Toggle
 const mobileMenuBtn = document.querySelector('.mobile-menu');
 const navLinks = document.querySelector('.nav-links');
