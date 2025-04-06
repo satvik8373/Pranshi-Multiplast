@@ -164,4 +164,58 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleMenu();
         }
     });
+});
+
+// Breadcrumb Generation
+document.addEventListener('DOMContentLoaded', function() {
+    // Create breadcrumb structure
+    function generateBreadcrumbs() {
+        const path = window.location.pathname;
+        const pathParts = path.split('/').filter(part => part !== '');
+        
+        // Don't show breadcrumbs on homepage
+        if (path === '/' || path === '/index.html') return;
+        
+        const breadcrumbHTML = `
+            <div class="breadcrumb">
+                <div class="breadcrumb-container">
+                    <ul class="breadcrumb-list">
+                        <li class="breadcrumb-item">
+                            <a href="/">Home</a>
+                        </li>
+                        ${generateBreadcrumbItems(pathParts)}
+                    </ul>
+                </div>
+            </div>
+        `;
+        
+        // Insert breadcrumbs after header
+        const header = document.querySelector('.header');
+        header.insertAdjacentHTML('afterend', breadcrumbHTML);
+    }
+    
+    // Generate individual breadcrumb items
+    function generateBreadcrumbItems(pathParts) {
+        let currentPath = '';
+        return pathParts.map((part, index) => {
+            currentPath += '/' + part;
+            const isLast = index === pathParts.length - 1;
+            const readableName = part.replace(/-/g, ' ')
+                                   .replace('.html', '')
+                                   .split(' ')
+                                   .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                   .join(' ');
+            
+            if (isLast) {
+                return `<li class="breadcrumb-item active">${readableName}</li>`;
+            } else {
+                return `<li class="breadcrumb-item">
+                    <a href="${currentPath}">${readableName}</a>
+                </li>`;
+            }
+        }).join('');
+    }
+    
+    // Initialize breadcrumbs
+    generateBreadcrumbs();
 }); 
