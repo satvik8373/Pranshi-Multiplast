@@ -1,3 +1,60 @@
+// Loading Screen
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we should show the loading screen
+    const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
+    const isFirstVisit = !localStorage.getItem('hasVisited');
+    const isPageRefresh = !document.referrer;
+
+    // Only show loading screen on first visit or when switching to home page (not on refresh)
+    if ((isHomePage && !isPageRefresh) || isFirstVisit) {
+        // Create loading screen element
+        const loadingScreen = document.createElement('div');
+        loadingScreen.className = 'loading-screen';
+        loadingScreen.innerHTML = `
+            <div class="loading-content">
+                <div class="loading-icons">
+                    <div class="icon-item">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="icon-item">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="icon-item">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="icon-item">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                </div>
+                <div class="logo-circle">
+                    <img src="images/logo.jpg" alt="Logo">
+                </div>
+                <div class="loading-text">PRANSHI MULTIPLAST</div>
+            </div>
+        `;
+
+        // Add loading screen to page
+        document.body.appendChild(loadingScreen);
+
+        // Add fade-out class after delay
+        setTimeout(() => {
+            loadingScreen.classList.add('fade-out');
+            setTimeout(() => {
+                loadingScreen.remove();
+            }, 300);
+        }, 1500);
+
+        // Prevent scrolling while loading screen is visible
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+            document.body.style.overflow = '';
+        }, 1500);
+
+        // Mark as visited
+        localStorage.setItem('hasVisited', 'true');
+    }
+});
+
 // Development Banner
 document.addEventListener('DOMContentLoaded', function() {
     // Check if banner was previously dismissed
