@@ -89,8 +89,27 @@
                     </div>
                     <div class="product-content">
                         <span class="product-category">Printing</span>
-                        <h3 class="product-title">Flexographic Printing</h3>
-                        <p class="truncated">High-speed flexographic printing machines delivering exceptional print quality and consistency. Our printing systems incorporate advanced color management, precise registration control, and efficient drying systems for optimal results.</p>
+                        <h3 class="product-title">6-Color Rotogravure Printing Machine</h3>
+                        <div class="product-description">
+                            <p class="truncated">At Pranshi Multiplast, we believe in staying ahead of the curve through cutting-edge technology and world-class machinery. Our production facility is equipped with the 6-Color SHANTI SOLUTION High-Speed Flexographic Printing Machine, ensuring unmatched quality, precision, and efficiency in every project we undertake.
+
+                            <h4>Key Features of Our 6-Color SHANTI SOLUTION Printing Machine:</h4>
+                            <ul>
+                                <li><strong>High-Speed Performance</strong>: Capable of delivering fast and flawless printing, our machine ensures quick turnaround times without compromising on quality.</li>
+                                <li><strong>6-Color Precision Printing</strong>: Enables vivid, high-resolution multicolor printing with excellent registration accuracy—ideal for dynamic designs and branding.</li>
+                                <li><strong>Wide Substrate Compatibility</strong>: Prints efficiently on a variety of flexible packaging materials such as LDPE, HDPE, PP, BOPP, and more.</li>
+                                <li><strong>Automatic Tension Control & Web Alignment</strong>: Ensures seamless operations and reduces material wastage.</li>
+                                <li><strong>Eco-Friendly Ink System</strong>: Supports water-based and solvent-based inks, making our processes more sustainable and compliant with global standards.</li>
+                            </ul>
+
+                            <h4>How This Benefits You</h4>
+                            <ul>
+                                <li><strong>Superior Print Quality</strong>: Your packaging stands out with sharp, vibrant graphics that truly reflect your brand image.</li>
+                                <li><strong>Faster Delivery</strong>: With high-speed output, we can take on bulk orders while ensuring timely dispatch and consistent quality.</li>
+                                <li><strong>Custom Print Flexibility</strong>: The 6-color capability allows us to match complex designs and color schemes tailored to your product needs.</li>
+                                <li><strong>Cost-Effective Production</strong>: Our efficient setup minimizes downtime and reduces waste, saving you money while maximizing output.</li>
+                            </ul></p>
+                        </div>
                         <button class="read-more-btn">
                             Read More <i class="fas fa-chevron-down"></i>
                         </button>
@@ -114,7 +133,26 @@
                     <div class="product-content">
                         <span class="product-category">Converting</span>
                         <h3 class="product-title">Slitting & Rewinding</h3>
-                        <p class="truncated">Advanced slitting and rewinding machines designed for precision cutting and converting of various packaging materials. Features include automated tension control, multiple slitting options, and high-speed operation capabilities.</p>
+                        <div class="product-description">
+                            <p class="truncated">At Pranshi Multiplast, we're committed to delivering not just great printing, but perfect finishing too. Our facility includes a high-performance Slitting Machine, designed to deliver sharp, accurate, and consistent cuts across a wide range of flexible packaging materials.
+
+                            <h4>Key Features of Our Slitting Machine:</h4>
+                            <ul>
+                                <li><strong>High Precision Cutting</strong>: Equipped with ultra-sharp blades and advanced tension control, our machine ensures clean, straight cuts without burrs or rough edges.</li>
+                                <li><strong>Adjustable Slitting Widths</strong>: Customizable settings allow for exact slitting to meet your product specifications—whether narrow rolls or wide formats.</li>
+                                <li><strong>High-Speed Operation</strong>: Supports fast slitting for large production batches while maintaining accuracy and consistency.</li>
+                                <li><strong>Automatic Rewinding System</strong>: Delivers tightly wound rolls with even edges—ready for immediate dispatch or further processing.</li>
+                                <li><strong>Low Waste Design</strong>: Engineered for optimal efficiency, minimizing waste and maximizing output.</li>
+                            </ul>
+
+                            <h4>How This Benefits You</h4>
+                            <ul>
+                                <li><strong>Perfect Roll Sizes Every Time</strong>: Get rolls that are cut exactly to your needs, ready for packaging, sealing, or converting.</li>
+                                <li><strong>Professional Finish</strong>: Clean edges and precise alignment ensure a high-end, professional look for your packaging products.</li>
+                                <li><strong>Fast Turnaround</strong>: Our speed and precision help shorten lead times without compromising quality.</li>
+                                <li><strong>Versatile Applications</strong>: Ideal for BOPP, LDPE, HDPE, PET, laminated films, and other flexible substrates.</li>
+                            </ul></p>
+                        </div>
                         <button class="read-more-btn">
                             Read More <i class="fas fa-chevron-down"></i>
                         </button>
@@ -258,13 +296,15 @@
             const readMoreBtns = document.querySelectorAll('.read-more-btn');
             
             readMoreBtns.forEach(btn => {
-                const productInfo = btn.closest('.product-content');
-                const description = productInfo.querySelector('p');
+                const productContent = btn.closest('.product-content');
+                const description = productContent.querySelector('.product-description');
+                const paragraph = description.querySelector('p');
                 
                 btn.addEventListener('click', function() {
                     const isExpanded = description.classList.contains('expanded');
                     
                     description.classList.toggle('expanded');
+                    paragraph.classList.toggle('expanded');
                     this.classList.toggle('expanded');
                     
                     if (!isExpanded) {

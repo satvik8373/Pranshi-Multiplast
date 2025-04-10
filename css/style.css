@@ -3133,7 +3133,7 @@ body {
 
 .product-description p.truncated {
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -3147,6 +3147,19 @@ body {
     -webkit-line-clamp: unset;
     white-space: pre-line;
     margin-bottom: 1.5rem;
+}
+
+.product-description h4,
+.product-description ul {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-description.expanded h4,
+.product-description.expanded ul {
+    display: block;
+    opacity: 1;
 }
 
 .product-description h4 {
@@ -3175,6 +3188,40 @@ body {
     position: absolute;
     left: 0;
     color: #6a11cb;
+}
+
+.product-description ul li strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Read More Button Styles */
+.read-more-btn {
+    color: #6a11cb;
+    background: none;
+    border: none;
+    padding: 5px 0;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+    color: #2575fc;
+}
+
+.read-more-btn i {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.read-more-btn.expanded i {
+    transform: rotate(180deg);
 }
 
 /* Responsive adjustments */
