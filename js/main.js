@@ -55,84 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Development Banner
-document.addEventListener('DOMContentLoaded', function() {
-    // Check if banner was previously dismissed
-    if (localStorage.getItem('devBannerDismissed')) return;
-
-    // Create banner element
-    const banner = document.createElement('div');
-    banner.className = 'dev-banner';
-    banner.innerHTML = `
-        <span>Development Mode - Created by <span class="dev-name">~satvik patel</span></span>
-        <button class="close-btn" aria-label="Close banner">×</button>
-    `;
-
-    // Add banner to page
-    document.body.insertBefore(banner, document.body.firstChild);
-
-    // Handle close button click
-    const closeBtn = banner.querySelector('.close-btn');
-    closeBtn.addEventListener('click', () => {
-        banner.style.opacity = '0';
-        banner.style.transition = 'opacity 0.3s ease';
-        setTimeout(() => {
-            banner.remove();
-            localStorage.setItem('devBannerDismissed', 'true');
-        }, 300);
-    });
-
-    // Adjust header position to account for banner
-    const header = document.querySelector('.header');
-    if (header) {
-        header.style.top = '2.5rem';
-    }
-});
-
-// Development Status
-document.addEventListener('DOMContentLoaded', function() {
-    // Check if status was previously dismissed
-    if (localStorage.getItem('devStatusDismissed')) return;
-
-    // Create status element
-    const status = document.createElement('div');
-    status.className = 'dev-status';
-    status.innerHTML = `
-        <button class="dev-status-toggle" aria-label="Toggle development status">×</button>
-        <h4>Development Status</h4>
-        <ul class="dev-status-list">
-            <li class="dev-status-item incomplete">Mobile menu animation needs refinement</li>
-            <li class="dev-status-item bug">Product images not loading on Safari</li>
-            <li class="dev-status-item glitch">Contact form validation incomplete</li>
-            <li class="dev-status-item incomplete">Responsive design issues on tablets</li>
-            <li class="dev-status-item bug">Footer links not working properly</li>
-        </ul>
-    `;
-
-    // Add status to page
-    document.body.appendChild(status);
-
-    // Handle toggle button click
-    const toggleBtn = status.querySelector('.dev-status-toggle');
-    toggleBtn.addEventListener('click', () => {
-        status.classList.toggle('collapsed');
-        localStorage.setItem('devStatusCollapsed', status.classList.contains('collapsed'));
-    });
-
-    // Restore collapsed state if previously set
-    if (localStorage.getItem('devStatusCollapsed') === 'true') {
-        status.classList.add('collapsed');
-    }
-
-    // Handle click on collapsed status to expand
-    status.addEventListener('click', (e) => {
-        if (status.classList.contains('collapsed') && e.target === status) {
-            status.classList.remove('collapsed');
-            localStorage.setItem('devStatusCollapsed', 'false');
-        }
-    });
-});
-
 // Mobile Menu Functionality
 const mobileMenu = document.querySelector('.mobile-menu');
 const navLinks = document.querySelector('.nav-links');
@@ -361,4 +283,70 @@ document.addEventListener('DOMContentLoaded', function() {
     if (copyrightYearElement) {
         copyrightYearElement.textContent = new Date().getFullYear();
     }
-}); 
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize header functionality
+    initializeHeader();
+
+    // Initialize smooth scrolling
+    initializeSmoothScroll();
+
+    // Initialize animations
+    initializeAnimations();
+});
+
+function initializeHeader() {
+    const header = document.querySelector('.header');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav-links');
+
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    }
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+}
+
+function initializeSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+function initializeAnimations() {
+    // Add animation classes to elements when they become visible
+    const animatedElements = document.querySelectorAll('.fade-in, .slide-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+} 
