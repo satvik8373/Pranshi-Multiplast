@@ -865,12 +865,12 @@ body {
 
 @media (max-width: 768px) {
     .featured-products {
-        padding: 5rem 5%;
+    padding: 5rem 5%;
         margin-top: -3rem;
-    }
+}
 
     .section-header {
-        margin-bottom: 3rem;
+    margin-bottom: 3rem;
     }
 
     .product-grid {
@@ -908,7 +908,7 @@ body {
     }
 }
 
-/* Industries Section (Production Statistics) */
+/* Industries Section */
 .industries {
     padding: 8rem 5%;
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
@@ -917,93 +917,94 @@ body {
     margin-top: -5rem;
 }
 
-.industries::before {
-    content: '';
+.industry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 4rem auto 0;
+    padding: 0 1rem;
+}
+
+.industry-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(106, 17, 203, 0.05);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    aspect-ratio: 4/3;
+}
+
+.industry-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(106, 17, 203, 0.1);
+}
+
+.industry-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.industry-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    filter: brightness(1.05);
+}
+
+.industry-card:hover .industry-image img {
+    transform: scale(1.1);
+}
+
+.industry-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 100% 0%, rgba(106, 17, 203, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 0% 100%, rgba(37, 117, 252, 0.05) 0%, transparent 50%);
-    pointer-events: none;
+    background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0.4) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    transition: all 0.4s ease;
 }
 
-.industry-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.industry-card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(106, 17, 203, 0.1);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    position: relative;
-    padding: 2.5rem;
-    text-align: center;
-    background: linear-gradient(45deg, rgba(106, 17, 203, 0.03), rgba(37, 117, 252, 0.03));
-    border: 1px solid rgba(106, 17, 203, 0.1);
-}
-
-.industry-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(106, 17, 203, 0.15);
+.industry-card:hover .industry-overlay {
+    background: linear-gradient(to bottom, 
+        rgba(37, 117, 252, 0.6) 0%,
+        rgba(106, 17, 203, 0.6) 100%
+    );
 }
 
 .industry-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.industry-icon {
-    font-size: 2.5rem;
-    background: linear-gradient(45deg, #6a11cb, #2575fc);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
+    color: white;
+    text-align: left;
+    width: 100%;
 }
 
 .industry-content h3 {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin: 0.5rem 0;
-    background: linear-gradient(45deg, #6a11cb, #2575fc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1.3;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    transform: translateY(0);
+    transition: transform 0.4s ease;
 }
 
 .industry-content p {
-    font-size: 1.1rem;
-    color: #666;
-    margin: 0;
-    font-weight: 500;
+    display: none;
 }
 
-@media (max-width: 1024px) {
-    .industries {
-        padding: 6rem 5%;
-    }
-    
+@media (max-width: 1200px) {
     .industry-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1.5rem;
-    }
-    
-    .industry-card {
-        padding: 2rem;
-    }
-    
-    .industry-content h3 {
-        font-size: 2.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 }
 
@@ -1012,22 +1013,15 @@ body {
         padding: 5rem 5%;
         margin-top: -3rem;
     }
-    
+
     .industry-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
     }
-    
-    .industry-card {
-        padding: 1.5rem;
-    }
-    
+
     .industry-content h3 {
-        font-size: 2.2rem;
-    }
-    
-    .industry-content p {
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
 }
 
@@ -1036,17 +1030,13 @@ body {
         padding: 4rem 1.5rem;
         margin-top: -2rem;
     }
-    
+
     .industry-grid {
         grid-template-columns: 1fr;
     }
-    
-    .industry-card {
+
+    .industry-overlay {
         padding: 1.5rem;
-    }
-    
-    .industry-content h3 {
-        font-size: 2rem;
     }
 }
 
@@ -1569,7 +1559,7 @@ body {
     }
     
     .stat-number {
-        font-size: 2.5rem;
+    font-size: 2.5rem;
     }
 }
 
@@ -1774,7 +1764,7 @@ body {
     
     .mission-item {
         flex-direction: column;
-        align-items: center;
+    align-items: center;
         text-align: center;
         padding: 1.5rem;
     }
@@ -2223,66 +2213,114 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     z-index: 1000;
-    max-width: 400px;
+    max-width: 500px;
     width: 90%;
-    text-align: center;
-    animation: fadeInScale 0.5s ease-out;
+    animation: messagePopup 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .success-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
 }
 
 .success-content i {
     font-size: 4rem;
     color: #28a745;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    animation: successIcon 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s both;
 }
 
 .success-content h3 {
     font-size: 1.8rem;
-    color: #333;
+    color: #1a1a1a;
     margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 .success-content p {
     color: #666;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     line-height: 1.6;
 }
 
 .success-details {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     padding-top: 1.5rem;
     border-top: 1px solid #eee;
     text-align: left;
-    width: 100%;
 }
 
-.success-details p {
-    margin: 0.5rem 0;
+.success-details .detail-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed #eee;
 }
 
-.success-details strong {
-    color: #333;
+.success-details .detail-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
-@keyframes fadeInScale {
-    from {
+.success-details .detail-label {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.success-details .detail-value {
+    color: #1a1a1a;
+    font-weight: 500;
+    text-align: right;
+}
+
+.success-details .detail-value.email {
+    color: #6a11cb;
+}
+
+.success-details .detail-value.phone {
+    color: #2575fc;
+}
+
+@keyframes messagePopup {
+    0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
+        transform: translate(-50%, -40%);
     }
-    to {
+    100% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes successIcon {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
     }
 }
 
@@ -2751,7 +2789,7 @@ body {
 
     .show-more-btn {
         padding: 1rem 2.5rem;
-        width: 100%;
+    width: 100%;
         max-width: 300px;
     }
 
@@ -2920,7 +2958,7 @@ body {
 
 @media (max-width: 768px) {
     .opening-hours {
-        text-align: center;
+    text-align: center;
     }
     
     .opening-hours li {
@@ -3015,7 +3053,7 @@ body {
 
 .test-item {
     background: white;
-    padding: 1.5rem;
+        padding: 1.5rem;
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(106, 17, 203, 0.1);
@@ -3100,7 +3138,7 @@ body {
     .principles-list li {
         padding: 1.5rem;
         flex-direction: column;
-        text-align: center;
+    text-align: center;
         align-items: center;
     }
 
@@ -3122,7 +3160,7 @@ body {
 
     .quality-principles h3,
     .testing-procedures h3 {
-        font-size: 1.5rem;
+    font-size: 1.5rem;
     }
 }
 
@@ -3241,4 +3279,192 @@ body {
     }
 }
 
+/* Facility Section Styles */
+.facility-section {
+    padding: 80px 0;
+    background: #ffffff;
+}
+
+.facility-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.facility-item {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.facility-item:hover {
+    transform: translateY(-10px);
+}
+
+.facility-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.facility-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.facility-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 20px;
+}
+
+.facility-overlay h3 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.facility-content {
+    padding: 25px;
+}
+
+.facility-content h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.facility-content p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.facility-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.facility-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.facility-features i {
+    color: #6a11cb;
+    font-size: 1rem;
+}
+
+/* Additional Facilities Section */
+.additional-facilities {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.facility-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.facility-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.facility-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border-radius: 50%;
+}
+
+.facility-icon i {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.facility-card h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.facility-card p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .facility-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .facilities-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .facility-item {
+        margin-bottom: 30px;
+    }
+}
+
 /* End of file */
+
+/* Structure Overview Styles */
+.structure-overview {
+    margin: 50px 0;
+    text-align: center;
+}
+
+.structure-image {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+}
+
+.structure-caption {
+    color: #666;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .structure-image {
+        max-width: 100%;
+    }
+    
+    .structure-caption {
+        font-size: 1rem;
+    }
+} 

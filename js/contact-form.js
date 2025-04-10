@@ -4,97 +4,144 @@ document.addEventListener('DOMContentLoaded', function() {
     const ownerEmail = 'pranshimultiplast@gmail.com';
 
     if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
             // Get form data
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const subject = document.getElementById('subject').value.trim();
-            const message = document.getElementById('message').value.trim();
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
 
             // Validate form data
-            if (!name || !email || !phone || !subject || !message) {
-                showError('Please fill in all fields');
+            if (!formData.name || !formData.email || !formData.phone || !formData.subject || !formData.message) {
+                showError('Please fill in all required fields');
                 return;
             }
 
             // Validate email format
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
+            if (!emailRegex.test(formData.email)) {
                 showError('Please enter a valid email address');
                 return;
             }
 
             // Show loading state
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
+            const submitBtn = contactForm.querySelector('.submit-btn');
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-            try {
-                // Prepare template parameters
-                const templateParams = {
-                    to_name: 'Admin',
-                    to_email: ownerEmail,
-                    from_name: name,
-                    from_email: email,
-                    phone: phone,
-                    subject: subject,
-                    message: message,
-                    reply_to: email
-                };
+            // Format the message with all details
+            const formattedMessage = `
+Customer Details:
+----------------
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Subject: ${formData.subject}
 
-                console.log('Sending email with params:', templateParams);
+Message:
+----------------
+${formData.message}
+            `;
 
-                // Send email using EmailJS
-                const response = await emailjs.send(
-                    'service_w38jz7l',
-                    'template_l4kqfzo',
-                    templateParams,
-                    '2-KFhOBe5OS2fUHna'
-                );
+            // Prepare email content
+            const emailParams = {
+                to_name: 'Pranshi Multiplast',
+                to_email: ownerEmail,
+                from_name: formData.name,
+                from_email: formData.email,
+                phone: formData.phone,
+                subject: formData.subject,
+                message: formattedMessage,
+                customer_name: formData.name,
+                customer_email: formData.email,
+                customer_phone: formData.phone,
+                customer_subject: formData.subject,
+                customer_message: formData.message
+            };
 
-                console.log('Email sent successfully:', response);
+            console.log('Sending email with params:', emailParams);
 
-                // Show success message
-                showSuccess(name, email, phone, subject);
-
-                // Reset form
-                contactForm.reset();
-
-            } catch (error) {
-                console.error('Email sending error:', error);
-                showError(error.text || 'Failed to send message. Please try again.');
-            } finally {
-                // Reset button state
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-            }
+            // Send email using EmailJS
+            emailjs.send('service_w38jz7l', 'template_l4kqfzo', emailParams, '2-KFhOBe5OS2fUHna')
+                .then(function(response) {
+                    console.log('Email sent successfully:', response);
+                    // Show success message with customer details
+                    showSuccess(formData);
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                })
+                .catch(function(error) {
+                    console.error('Email sending error:', error);
+                    
+                    // Provide more specific error message
+                    let errorMessage = 'Failed to send message. ';
+                    
+                    if (error.text) {
+                        errorMessage += 'Error: ' + error.text;
+                    } else if (error.status) {
+                        errorMessage += 'Status: ' + error.status;
+                    } else {
+                        errorMessage += 'Please try again or contact us directly at ' + ownerEmail;
+                    }
+                    
+                    showError(errorMessage);
+                    
+                    // Enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                });
         });
     }
 
     // Helper function to show success message
-    function showSuccess(name, email, phone, subject) {
+    function showSuccess(formData) {
+        // Create success message element
         const successMessage = document.createElement('div');
         successMessage.className = 'success-message';
         successMessage.innerHTML = `
             <div class="success-content">
                 <i class="fas fa-check-circle"></i>
-                <h3>Thank You!</h3>
-                <p>Your message has been sent successfully. We will contact you soon.</p>
+                <h3>Message Sent Successfully!</h3>
+                <p>Thank you for contacting us. We'll get back to you shortly.</p>
                 <div class="success-details">
-                    <p><strong>Name:</strong> ${name}</p>
-                    <p><strong>Email:</strong> ${email}</p>
-                    <p><strong>Phone:</strong> ${phone}</p>
-                    <p><strong>Subject:</strong> ${subject}</p>
+                    <div class="detail-item">
+                        <span class="detail-label">Full Name</span>
+                        <span class="detail-value">${formData.name}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Email</span>
+                        <span class="detail-value email">${formData.email}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Phone</span>
+                        <span class="detail-value phone">${formData.phone}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Subject</span>
+                        <span class="detail-value">${formData.subject}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Message</span>
+                        <span class="detail-value">${formData.message}</span>
+                    </div>
                 </div>
             </div>
         `;
+
+        // Add to body
         document.body.appendChild(successMessage);
 
-        // Remove success message after 5 seconds
+        // Remove after 5 seconds
         setTimeout(() => {
             successMessage.classList.add('fade-out');
             setTimeout(() => {
@@ -104,20 +151,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Helper function to show error message
-    function showError(errorText) {
+    function showError(message) {
+        // Create error message element
         const errorMessage = document.createElement('div');
         errorMessage.className = 'error-message';
         errorMessage.innerHTML = `
             <div class="error-content">
                 <i class="fas fa-exclamation-circle"></i>
-                <h3>Error!</h3>
-                <p>${errorText}</p>
-                <p>If the problem persists, please contact us directly at ${ownerEmail}</p>
+                <h3>Error</h3>
+                <p>${message}</p>
             </div>
         `;
+
+        // Add to body
         document.body.appendChild(errorMessage);
 
-        // Remove error message after 5 seconds
+        // Remove after 5 seconds
         setTimeout(() => {
             errorMessage.classList.add('fade-out');
             setTimeout(() => {
