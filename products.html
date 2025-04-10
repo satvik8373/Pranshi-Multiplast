@@ -3,110 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Products - Multiplast Factory</title>
+    <title>Products - Pranshi Multiplast</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="/js/favicon.js"></script>
 </head>
 <body>
-    <!-- Header Section -->
-    <script src="js/header.js"></script>
-    <!-- Products Hero Section -->
-    <section class="page-hero" style="background-image: url('images/hero/page-hero-bg.jpg');">
+    <!-- Header will be loaded dynamically -->
+
+    <!-- Page Hero Section -->
+    <section class="hero">
         <div class="hero-content">
-            <h1>Our Products</h1>
-            <p>High-Quality Packaging Solutions for Every Industry</p>
+            <div class="hero-tag">OUR PRODUCTS</div>
+            <h1 class="hero-title">Product Range</h1>
+            <p class="hero-description">Discover our comprehensive range of innovative packaging solutions.</p>
+        </div>
+        <div class="floating-elements">
+            <div class="float-item recycle-icon">♻️</div>
+            <div class="float-item plus-icon">+</div>
+            <div class="float-item plus-icon-2">+</div>
+            <div class="float-item circle"></div>
+            <div class="float-item circle-2"></div>
         </div>
     </section>
 
     <!-- Product Categories Section -->
     <section class="product-categories">
         <div class="container">
-            <div class="category-filters">
-                <button class="filter-btn active" data-category="all">All Products</button>
-                <button class="filter-btn" data-category="chips">Chips Packaging</button>
-                <button class="filter-btn" data-category="multi-layer">Multi Layer Films</button>
-                <button class="filter-btn" data-category="barrier">Barrier Films</button>
-                <button class="filter-btn" data-category="laminated">Laminated Films</button>
+            <div class="section-header">
+                <span class="section-tag">Categories</span>
+                <h2>Our Product Range</h2>
+                <p class="section-subtitle">Explore our diverse range of packaging solutions designed for various industries.</p>
             </div>
+            
+          
 
             <div class="products-grid">
-                <!-- Chips Packaging -->
-                <div class="product-item" data-category="chips">
+                <!-- Product Item 1 -->
+                <div class="product-item">
                     <div class="product-image">
-                        <img src="images/products/chips-packet.jpg" alt="Chips Packet">
+                        <img src="images/products/LDPE shrink film roll.PNG" alt="LDPE Shrink Film Roll">
                         <div class="product-overlay">
                             <a href="#" class="view-details">View Details</a>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3>Chips Packet</h3>
-                        <p>Premium quality packaging for snack products with excellent barrier properties.</p>
+                        <h3>LDPE Shrink Film Roll</h3>
+                        <p>High-quality LDPE shrink film rolls for industrial packaging needs.</p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check"></i> High Barrier Protection</li>
-                            <li><i class="fas fa-check"></i> Moisture Resistant</li>
-                            <li><i class="fas fa-check"></i> Customizable Design</li>
+                            <li><i class="fas fa-check"></i>Superior Shrinkage</li>
+                            <li><i class="fas fa-check"></i>Excellent Clarity</li>
+                            <li><i class="fas fa-check"></i>Custom Sizes</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Multi Layer Films -->
-                <div class="product-item" data-category="multi-layer">
+                <!-- Product Item 2 -->
+                <div class="product-item">
                     <div class="product-image">
-                        <img src="images/products/multi-layer-films.jpg" alt="Multi Layer Films">
+                        <img src="images/products/Milk pouch roll.PNG" alt="Milk Pouch Roll">
                         <div class="product-overlay">
                             <a href="#" class="view-details">View Details</a>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3>Multi Layer Films</h3>
-                        <p>Advanced multi-layer solutions for various industries with superior protection.</p>
+                        <h3>Milk Pouch Roll</h3>
+                        <p>High-quality milk pouch rolls for dairy packaging needs.</p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check"></i> Multiple Layer Protection</li>
-                            <li><i class="fas fa-check"></i> Enhanced Durability</li>
-                            <li><i class="fas fa-check"></i> Versatile Applications</li>
+                            <li><i class="fas fa-check"></i>Food Grade Material</li>
+                            <li><i class="fas fa-check"></i>Leak Proof</li>
+                            <li><i class="fas fa-check"></i>Tamper Evident</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Barrier Films -->
-                <div class="product-item" data-category="barrier">
-                    <div class="product-image">
-                        <img src="images/products/barrier-films.jpg" alt="Barrier Films">
-                        <div class="product-overlay">
-                            <a href="#" class="view-details">View Details</a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Barrier Films</h3>
-                        <p>High barrier protection films for sensitive products requiring extended shelf life.</p>
-                        <ul class="product-features">
-                            <li><i class="fas fa-check"></i> Oxygen Barrier</li>
-                            <li><i class="fas fa-check"></i> UV Protection</li>
-                            <li><i class="fas fa-check"></i> Temperature Resistant</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Laminated Films -->
-                <div class="product-item" data-category="laminated">
-                    <div class="product-image">
-                        <img src="images/products/laminated-films.jpg" alt="Laminated Films">
-                        <div class="product-overlay">
-                            <a href="#" class="view-details">View Details</a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Laminated Films</h3>
-                        <p>Custom laminated films for specific industry requirements and applications.</p>
-                        <ul class="product-features">
-                            <li><i class="fas fa-check"></i> Custom Lamination</li>
-                            <li><i class="fas fa-check"></i> Print-Ready Surface</li>
-                            <li><i class="fas fa-check"></i> Industry-Specific Solutions</li>
-                        </ul>
-                    </div>
-                </div>
+                <!-- Add more product items as needed -->
             </div>
         </div>
     </section>
@@ -114,27 +86,32 @@
     <!-- Product Features Section -->
     <section class="product-features-section">
         <div class="container">
-            <h2>Why Choose Our Products?</h2>
+            <div class="section-header">
+                <span class="section-tag">Features</span>
+                <h2>Product Features</h2>
+                <p class="section-subtitle">Key features that make our products stand out in the market.</p>
+            </div>
+
             <div class="features-grid">
-                <div class="feature-item">
-                    <i class="fas fa-medal"></i>
-                    <h3>Premium Quality</h3>
-                    <p>Manufactured using state-of-the-art technology and high-quality materials.</p>
-                </div>
                 <div class="feature-item">
                     <i class="fas fa-leaf"></i>
                     <h3>Eco-Friendly</h3>
-                    <p>Environmentally conscious packaging solutions for sustainable business.</p>
+                    <p>Sustainable materials that minimize environmental impact.</p>
                 </div>
                 <div class="feature-item">
-                    <i class="fas fa-truck"></i>
-                    <h3>Timely Delivery</h3>
-                    <p>Efficient logistics ensuring on-time delivery of products.</p>
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Durable</h3>
+                    <p>High-quality materials ensuring long-lasting performance.</p>
                 </div>
                 <div class="feature-item">
-                    <i class="fas fa-headset"></i>
-                    <h3>Expert Support</h3>
-                    <p>Dedicated technical support team for all your packaging needs.</p>
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Customizable</h3>
+                    <p>Flexible design options to match your brand identity.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certified</h3>
+                    <p>Meeting international quality and safety standards.</p>
                 </div>
             </div>
         </div>
@@ -143,7 +120,7 @@
     <!-- Footer -->
     <script src="js/footer.js"></script>
 
+    <script src="js/header.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/products.js"></script>
 </body>
 </html> 
