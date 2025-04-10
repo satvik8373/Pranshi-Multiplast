@@ -3,160 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiplast Factory - Modern Packaging Solutions</title>
+    <title>Pranshi Multiplast - Modern Packaging Solutions</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('images/home.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            margin: 0;
-            padding-top: 80px;
-        }
-
-        .hero::before {
-            content: none;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            width: 90%;
-            padding: 2rem;
-            position: relative;
-            z-index: 2;
-            background: transparent;
-            border-radius: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 5vw, 4.2rem);
-            margin-bottom: clamp(1rem, 2vw, 1.5rem);
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-        }
-
-        .hero-content p {
-            font-size: clamp(1.1rem, 2vw, 1.6rem);
-            margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 400;
-            opacity: 1;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: clamp(0.8rem, 1.5vw, 1.2rem) clamp(2rem, 3vw, 3rem);
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            font-size: clamp(1rem, 1.5vw, 1.1rem);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            border-color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
-        }
-
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                height: 100vh;
-                padding-top: 60px;
-            }
-
-            .hero-content {
-                padding: 1.5rem;
-                width: 95%;
-                background: transparent;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-content {
-                padding: 1rem;
-                background: transparent;
-            }
-        }
-
-        @media (min-height: 1000px) {
-            .hero {
-                height: 80vh;
-            }
-        }
-    </style>
+    <script src="/js/favicon.js"></script>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="logo">
-                <a href="/">
-                    <img src="images/logo.jpg" alt="Pranshi Multiplast Logo">
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="company-profile.html">Company Profile</a></li>
-                <li><a href="products.html">Our Products</a></li>
-                <li><a href="plant-machinery.html">Plant & Machinery</a></li>
-                <li><a href="we-serve.html">We Serve</a></li>
-                <li><a href="infrastructure.html">Infrastructure</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
-    </header>
+    <!-- Header will be loaded dynamically -->
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
             <h1>Welcome to Pranshi Multiplast</h1>
+            <p>Innovating Packaging Solutions for a Sustainable Future</p>
             <a href="contact.html" class="cta-button">Explore Our Solutions</a>
         </div>
     </section>
@@ -164,24 +24,69 @@
     <!-- Featured Products Section -->
     <section class="featured-products">
         <h2>Our Featured Products</h2>
+        <p class="section-subtitle">Discover our high-quality plastic products designed for various industries and applications</p>
         <div class="product-grid">
+            <!-- Product Card 1 -->
             <div class="product-card">
-                <img src="https://5.imimg.com/data5/OX/SG/OU/SELLER-4030615/milk-packaging-film-250x250.jpg" alt="Chips Packet">
-                <h3>Chips Packet</h3>
-                <p>Premium quality packaging for snack products</p>
-                <a href="products.html#chips-packet" class="read-more">Read More</a>
+                <div class="product-image">
+                    <img src="images/product1.jpg" alt="Industrial Packaging">
+                    <div class="product-overlay"></div>
+                </div>
+                <div class="product-content">
+                    <div class="product-category">Industrial Packaging</div>
+                    <h3 class="product-title">High-Performance Containers</h3>
+                    <p class="product-description">Premium quality containers designed for industrial storage and transportation needs.</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-check"></i> Durable Construction</li>
+                        <li><i class="fas fa-check"></i> Chemical Resistant</li>
+                        <li><i class="fas fa-check"></i> Stackable Design</li>
+                    </ul>
+                    <div class="product-action">
+                        <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
+
+            <!-- Product Card 2 -->
             <div class="product-card">
-                <img src="images/products/multi-layer-films.jpg" alt="Multi Layer Packaging">
-                <h3>Multi Layer Packaging</h3>
-                <p>Advanced multi-layer solutions for various industries</p>
-                <a href="products.html#multi-layer" class="read-more">Read More</a>
+                <div class="product-image">
+                    <img src="images/product2.jpg" alt="Consumer Packaging">
+                    <div class="product-overlay"></div>
+                </div>
+                <div class="product-content">
+                    <div class="product-category">Consumer Packaging</div>
+                    <h3 class="product-title">Food-Grade Containers</h3>
+                    <p class="product-description">Safe and reliable packaging solutions for food and beverage industry.</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-check"></i> Food-Safe Material</li>
+                        <li><i class="fas fa-check"></i> Airtight Sealing</li>
+                        <li><i class="fas fa-check"></i> Microwave Safe</li>
+                    </ul>
+                    <div class="product-action">
+                        <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
+
+            <!-- Product Card 3 -->
             <div class="product-card">
-                <img src="images/products/barrier-films.jpg" alt="Barrier Film">
-                <h3>Barrier Film</h3>
-                <p>High barrier protection for sensitive products</p>
-                <a href="products.html#barrier-film" class="read-more">Read More</a>
+                <div class="product-image">
+                    <img src="images/product3.jpg" alt="Specialty Packaging">
+                    <div class="product-overlay"></div>
+                </div>
+                <div class="product-content">
+                    <div class="product-category">Specialty Packaging</div>
+                    <h3 class="product-title">Custom Solutions</h3>
+                    <p class="product-description">Tailored packaging solutions designed to meet your specific requirements.</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-check"></i> Custom Sizes</li>
+                        <li><i class="fas fa-check"></i> Branded Options</li>
+                        <li><i class="fas fa-check"></i> Eco-Friendly</li>
+                    </ul>
+                    <div class="product-action">
+                        <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -262,38 +167,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p><i class="fas fa-phone"></i> +91 1234567890</p>
-                <p><i class="fas fa-envelope"></i> info@multiplast.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> Your Address Here</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="company-profile.html">Company Profile</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Multiplast Factory. All rights reserved.</p>
-        </div>
-    </footer>
+    <script src="js/footer.js"></script>
 
+    <script src="js/header.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html> 

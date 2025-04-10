@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <div class="logo-circle">
-                    <img src="images/logo.jpg" alt="Logo">
+                    <img src="images/icon.png" alt="Logo">
                 </div>
                 <div class="loading-text">PRANSHI MULTIPLAST</div>
             </div>
@@ -133,12 +133,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Mobile Menu Toggle
-const mobileMenuBtn = document.querySelector('.mobile-menu');
+// Mobile Menu Functionality
+const mobileMenu = document.querySelector('.mobile-menu');
 const navLinks = document.querySelector('.nav-links');
+const menuOverlay = document.querySelector('.menu-overlay');
+const body = document.body;
 
-mobileMenuBtn.addEventListener('click', () => {
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+function toggleMenu() {
+    mobileMenu.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+    body.style.overflow = body.style.overflow === 'hidden' ? '' : 'hidden';
+}
+
+mobileMenu.addEventListener('click', toggleMenu);
+menuOverlay.addEventListener('click', toggleMenu);
+
+// Close menu when clicking a nav link
+const navItems = document.querySelectorAll('.nav-links a');
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+});
+
+// Close menu on escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        toggleMenu();
+    }
+});
+
+// Close menu if window is resized beyond mobile breakpoint
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+        toggleMenu();
+    }
 });
 
 // Smooth Scrolling for Navigation Links
@@ -248,59 +280,6 @@ function isValidEmail(email) {
     return re.test(String(email).toLowerCase());
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
-    const body = document.body;
-    let menuOverlay;
-
-    // Create overlay element
-    function createOverlay() {
-        menuOverlay = document.createElement('div');
-        menuOverlay.className = 'menu-overlay';
-        body.appendChild(menuOverlay);
-    }
-    createOverlay();
-
-    // Toggle menu function
-    function toggleMenu() {
-        navLinks.classList.toggle('active');
-        menuOverlay.classList.toggle('active');
-        body.style.overflow = body.style.overflow === 'hidden' ? '' : 'hidden';
-    }
-
-    // Event listeners
-    mobileMenu.addEventListener('click', toggleMenu);
-    menuOverlay.addEventListener('click', toggleMenu);
-
-    // Close menu when clicking a link
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
-                toggleMenu();
-            }
-        });
-    });
-
-    // Handle resize
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
-                toggleMenu();
-            }
-        }, 250);
-    });
-
-    // Close menu on escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
-});
-
 // Breadcrumb Generation
 document.addEventListener('DOMContentLoaded', function() {
     // Create breadcrumb structure
@@ -353,4 +332,33 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize breadcrumbs
     generateBreadcrumbs();
+});
+
+// Function to load the footer
+async function loadFooter() {
+    try {
+        const response = await fetch('/footer.html');
+        const footerContent = await response.text();
+        document.body.insertAdjacentHTML('beforeend', footerContent);
+        
+        // Update copyright year
+        const currentYear = new Date().getFullYear();
+        const copyrightYearElement = document.getElementById('copyright-year');
+        if (copyrightYearElement) {
+            copyrightYearElement.textContent = currentYear;
+        }
+    } catch (error) {
+        console.error('Error loading footer:', error);
+    }
+}
+
+// Load footer when DOM is ready
+document.addEventListener('DOMContentLoaded', loadFooter);
+
+// Update copyright year
+document.addEventListener('DOMContentLoaded', function() {
+    const copyrightYearElement = document.getElementById('copyright-year');
+    if (copyrightYearElement) {
+        copyrightYearElement.textContent = new Date().getFullYear();
+    }
 }); 
