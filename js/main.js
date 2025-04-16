@@ -12,24 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
         loadingScreen.className = 'loading-screen';
         loadingScreen.innerHTML = `
             <div class="loading-content">
-                <div class="loading-icons">
-                    <div class="icon-item">
-                        <i class="fas fa-industry"></i>
-                    </div>
-                    <div class="icon-item">
-                        <i class="fas fa-box"></i>
-                    </div>
-                    <div class="icon-item">
-                        <i class="fas fa-recycle"></i>
-                    </div>
-                    <div class="icon-item">
-                        <i class="fas fa-cog"></i>
+                <div class="spinner-container">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="logo-circle">
+                        <img src="images/icon.png" alt="Logo">
                     </div>
                 </div>
-                <div class="logo-circle">
-                    <img src="images/icon.png" alt="Logo">
-                </div>
-                <div class="loading-text">PRANSHI MULTIPLAST</div>
             </div>
         `;
 
