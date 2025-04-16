@@ -339,4 +339,70 @@ function initializeAnimations() {
     animatedElements.forEach(element => {
         observer.observe(element);
     });
-} 
+}
+
+// Load Google Reviews
+document.addEventListener('DOMContentLoaded', function() {
+    const reviewsSlider = document.getElementById('reviewsSlider');
+    if (reviewsSlider) {
+        // Sample review data (in a real application, this would come from an API)
+        const reviews = [
+            {
+                name: 'Raj Patel',
+                rating: 5,
+                text: 'Pranshi Multiplast delivers exceptional quality packaging solutions. Their LDPE films have significantly improved our product protection during transit.',
+                date: '2 months ago'
+            },
+            {
+                name: 'Ankit Shah',
+                rating: 5,
+                text: 'Great customer service and reliable products. We\'ve been using their packaging materials for our dairy products and have seen a noticeable improvement in shelf life.',
+                date: '1 month ago'
+            },
+            {
+                name: 'Priya Desai',
+                rating: 5,
+                text: 'Professional team that understands industrial packaging needs. Their custom solutions helped us optimize our supply chain.',
+                date: '3 weeks ago'
+            }
+        ];
+        
+        // Create HTML for reviews
+        let currentReviewIndex = 0;
+        
+        function renderReview(review) {
+            const stars = '<i class="fas fa-star"></i>'.repeat(review.rating);
+            
+            return `
+                <div class="review-card">
+                    <div class="reviewer-name">${review.name}</div>
+                    <div class="reviewer-stars">${stars}</div>
+                    <div class="review-text">"${review.text}"</div>
+                    <div class="review-date">${review.date}</div>
+                </div>
+            `;
+        }
+        
+        // Show first review
+        reviewsSlider.innerHTML = renderReview(reviews[0]);
+        
+        // Set up automatic review rotation
+        setInterval(() => {
+            currentReviewIndex = (currentReviewIndex + 1) % reviews.length;
+            const newReview = renderReview(reviews[currentReviewIndex]);
+            
+            // Fade out current review
+            reviewsSlider.style.opacity = 0;
+            
+            // After fade out, change content and fade in
+            setTimeout(() => {
+                reviewsSlider.innerHTML = newReview;
+                reviewsSlider.style.opacity = 1;
+            }, 500);
+            
+        }, 7000); // Rotate every 7 seconds
+        
+        // Add transition for smooth fade effect
+        reviewsSlider.style.transition = 'opacity 0.5s ease';
+    }
+}); 
