@@ -1372,14 +1372,16 @@ img {
     }
 
     .industry-grid {
-        overflow-x: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
         margin-top: 3rem;
         padding-bottom: 15px;
+        overflow-x: visible;
     }
     
     .industry-card {
-        width: 220px;
+        width: 100%;
         min-height: 180px;
     }
     
@@ -1404,8 +1406,13 @@ img {
 
     .industry-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
 
+    .industry-card {
+        min-height: 160px;
+    }
+    
     .industry-overlay {
         padding: 1.5rem;
     }
