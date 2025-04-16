@@ -3934,3 +3934,112 @@ img {
         margin: 2px 0;
     }
 }
+
+/* Contact Numbers Box in Footer */
+.contact-numbers-box {
+    background: rgba(106, 17, 203, 0.15);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 3px solid var(--secondary-color);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contact-category {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-category:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.contact-category strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.number-container, .email-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.address-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    color: rgba(255, 255, 255, 1);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.address-container i {
+    color: #ffcc00;
+    margin-top: 3px;
+    font-size: 1rem;
+}
+
+.address-container p {
+    margin: 0;
+    padding-left: 16px;
+    position: relative;
+}
+
+.address-container i {
+    position: absolute;
+    left: 0;
+    top: 3px;
+}
+
+.contact-number, .contact-email {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    padding: 5px 0;
+}
+
+.contact-number i, .contact-email i {
+    color: #ffcc00;
+    width: 20px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.contact-number:hover, .contact-email:hover {
+    color: #ffcc00;
+    transform: translateX(3px);
+}
+
+.customer-care {
+    background: rgba(37, 117, 252, 0.25);
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    border-left: 2px solid #ffcc00;
+}
+
+.customer-care strong {
+    color: #ffcc00;
+}
+
+@media (max-width: 768px) {
+    .contact-numbers-box {
+        padding: 12px;
+    }
+    
+    .customer-care {
+        padding: 8px;
+    }
+}
