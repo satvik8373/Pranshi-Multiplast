@@ -1,14 +1,12 @@
 // Function to inject favicons directly
 function injectFavicons() {
     const faviconLinks = [
-        { rel: 'icon', type: 'image/png', href: 'images/favicon/favicon-16x16.png', sizes: '16x16' },
-        { rel: 'icon', type: 'image/png', href: 'images/favicon/favicon-32x32.png', sizes: '32x32' },
-        { rel: 'icon', type: 'image/png', href: 'images/favicon/favicon-96x96.png', sizes: '96x96' },
-        { rel: 'icon', type: 'image/svg+xml', href: 'images/favicon/favicon.svg' },
-        { rel: 'shortcut icon', href: 'images/favicon/favicon.ico' },
-        { rel: 'apple-touch-icon', sizes: '180x180', href: 'images/favicon/apple-touch-icon.png' },
-        { rel: 'manifest', href: 'images/favicon/site.webmanifest' },
-        { rel: 'icon', href: 'images/favicon/favicon.ico' } // Fallback favicon
+        { rel: 'icon', type: 'image/png', href: '/images/favicon/favicon-96x96.png', sizes: '96x96' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/images/favicon/favicon.svg' },
+        { rel: 'shortcut icon', href: '/images/favicon/favicon.ico' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/images/favicon/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/images/favicon/site.webmanifest' },
+        { rel: 'icon', href: '/images/favicon/favicon.ico' } // Fallback favicon
     ];
 
     // Remove any existing favicon links
